@@ -1,26 +1,26 @@
 import templateMenuCard from '../templates/menu-card.hbs';
 import menuData from '../menu.json';
 
-const listMenuCards = document.querySelector('.js-menu');
+const listMenuCardsRef = document.querySelector('.js-menu');
 
 const menuCards = templateMenuCard(menuData);
 
-listMenuCards.innerHTML = menuCards;
+listMenuCardsRef.innerHTML = menuCards;
 
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
-const body = document.querySelector('body');
+const bodyRef = document.querySelector('bodyRef');
 
-const checkBox =document.querySelector('#theme-switch-toggle'); 
-checkBox.addEventListener('change', onChangeTheme);
+const checkBoxRef =document.querySelector('#theme-switch-toggle'); 
+checkBoxRef.addEventListener('change', onChangeTheme);
 
 function onChangeTheme(e) {
     e.preventDefault();
 
-    if (checkBox.checked) {
+    if (checkBoxRef.checked) {
         checkedTrue()
     } else {
         checkedFalse();
@@ -41,16 +41,15 @@ function checkCurrentTheme() {
 checkCurrentTheme();
 
 function checkedTrue() {
-    body.classList.add(Theme.DARK);
-    body.classList.remove(Theme.LIGHT);
+    bodyRef.classList.add(Theme.DARK);
+    bodyRef.classList.remove(Theme.LIGHT);
     localStorage.setItem('theme', Theme.DARK);
-    checkBox.checked = true;
+    checkBoxRef.checked = true;
 }
 
 function checkedFalse() {
-    body.classList.add(Theme.LIGHT);
-    body.classList.remove(Theme.DARK);
+    bodyRef.classList.add(Theme.LIGHT);
+    bodyRef.classList.remove(Theme.DARK);
     localStorage.setItem('theme', Theme.LIGHT);
-    // checkBox.checked = false;
 }
 
